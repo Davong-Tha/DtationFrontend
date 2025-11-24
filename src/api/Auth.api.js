@@ -10,13 +10,14 @@ export async function registerUser({ name, email, password }) {
     });
 
     if (!res.ok) {
-        const errorBody = await res.json().catch(() => { });
+        const errorBody = await res.json().catch(() => {});
         throw new Error(errorBody.error || "Failed to register");
     }
     return res.json();
 }
 
 export async function loginUser({ email, password }) {
+    console.log(API_URL);
     const res = await fetch(`${API_URL}/auth/login`, {
         method: "POST",
         headers: {
@@ -25,9 +26,10 @@ export async function loginUser({ email, password }) {
         body: JSON.stringify({ email, password }),
     });
 
-    if(!res.ok){
+    if (!res.ok) {
         const errorBody = await res.json().catch(() => ({}));
-        throw new Error(errorBody.error || 'Failed to login')
+        console.log(errorBody.error);
+        throw new Error(errorBody.error || "Failed to login");
     }
     return res.json();
 }

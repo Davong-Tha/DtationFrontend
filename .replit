@@ -33,11 +33,12 @@ outputType = "webview"
 localPort = 5000
 externalPort = 80
 
-[[ports]]
-localPort = 41609
-externalPort = 3000
-
 [deployment]
 deploymentTarget = "static"
 build = ["npm", "run", "build"]
 publicDir = "dist"
+
+[userenv]
+
+[userenv.shared]
+VITE_API_URL = "https://4879efe7-f401-4467-bc0a-a1d906ff25cf-00-2be07tjrdzul1.sisko.replit.dev:3000"

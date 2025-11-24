@@ -1,11 +1,13 @@
 import { use, useState } from "react";
-import { loginUser } from "../api/api";
+import { loginUser } from "../api/Auth.api";
+import { useAuth } from "../context/Auth.context";
 
 export default function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [message, setMessage] = useState("");
   const [errr, setError] = useState("");
+  const { login, loginToken } = useAuth();
 
   async function handleSubmit(e) {
     e.preventDefault();
@@ -15,6 +17,7 @@ export default function Login() {
     try {
       const data = await loginUser({ email, password });
       setMessage("Logged in!");
+      login(data.token);
       console.log("TOKEN:", data.token);
     } catch (err) {
       setError(err.message);
