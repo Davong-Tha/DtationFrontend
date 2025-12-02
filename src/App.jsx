@@ -12,10 +12,13 @@ function App() {
 
   return (
     <div>
-      <nav>
+      <nav className="bg-slate-800 text-white px-6 py-3 flex gap-6">
         <Link to="/login">Login</Link>
+        <br />
         <Link to="/register">Register</Link>
+        <br />
         <Link to="/project">Project</Link>
+        <br />
       </nav>
 
       <Routes>
